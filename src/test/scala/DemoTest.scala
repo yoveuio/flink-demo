@@ -6,7 +6,8 @@ import org.apache.flink.runtime.testutils.MiniClusterResourceConfiguration
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment
 import org.apache.flink.test.util.MiniClusterWithClientResource
 import org.junit.Assert.{assertEquals, assertTrue}
-import org.junit.{ClassRule, Test}
+import org.junit.{ClassRule, Rule, Test}
+import org.testcontainers.containers.MySQLContainer
 
 class DemoTest extends BaseTestService:
 
@@ -31,6 +32,9 @@ class DemoTest extends BaseTestService:
     assertTrue(sink.containsAll(2L, 3L, 4L))
 
 object DemoTest:
+
+  @ClassRule
+  def mysql: MySQLContainer[_] = new MySQLContainer()
 
   @ClassRule
   def flinkCluster: MiniClusterWithClientResource =

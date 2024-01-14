@@ -8,6 +8,7 @@ val scalatestVersion = "3.2.15"
 val mockitoVersion = "5.5.0"
 val powerMockitoVersion = "2.0.9"
 val junitTestVersion = "4.13.2"
+val testcontainerVersion = "1.19.3"
 
 lazy val root = (project in file("."))
         .settings(
@@ -32,6 +33,10 @@ libraryDependencies ++= Seq(
     "org.mockito" % "mockito-core" % mockitoVersion % Test,
     "org.powermock" % "powermock-api-mockito2" % powerMockitoVersion % Test,
     "org.powermock" % "powermock-module-junit4" % powerMockitoVersion % Test,
+
+    "org.testcontainers" % "testcontainers" % testcontainerVersion % Test,
+    "org.testcontainers" % "mysql" % testcontainerVersion % Test,
+
 
 
 )
